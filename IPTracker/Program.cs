@@ -1,6 +1,6 @@
 ﻿internal class Program
 {
-    private static void Main(string[] args)
+    private static async Task Main(string[] args)
     {
         bool stop = false;
 
@@ -13,12 +13,12 @@
             Console.WriteLine("2. Obtener estadísticas");
             Console.WriteLine("3. Salir");
             Console.Write("Elige una opción: ");
-            string opcion = Console.ReadLine();
+            string? opcion = Console.ReadLine();
 
             switch (opcion)
             {
                 case "1":
-                    TraceIP(iptracker);
+                    await TraceIPAsync(iptracker);
                     break;
                 case "2":
                     Console.WriteLine("Rastrear IP");
@@ -35,11 +35,17 @@
         }
     }
 
-    private static void TraceIP(IPTracker iptracker)
+    private static async Task TraceIPAsync(IPTracker iptracker)
     {
         Console.Write("Ingresa la IP a rastrear: ");
-        string ipToTrack = Console.ReadLine();
+        string? ipToTrack = Console.ReadLine();
 
-        iptracker.TrackIP(ipToTrack);
+        if (string.IsNullOrWhiteSpace(ipToTrack))
+        {
+            Console.WriteLine("IP inválida. Inténtalo nuevamente.");
+            return;
+        }
+
+        await iptracker.TrackIPAsync(ipToTrack);
     }
 }
