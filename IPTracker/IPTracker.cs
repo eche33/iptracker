@@ -32,17 +32,12 @@ namespace Tracker
                 {
                     string responseContent = await response.Content.ReadAsStringAsync();
                     IPApiResponse? ipDetails = JsonConvert.DeserializeObject<IPApiResponse>(responseContent);
-
-                    Console.WriteLine(responseContent);
                                         
                     Console.WriteLine($"País: {ipDetails.Country_Name}");
                     Console.WriteLine($"ISO Code: {ipDetails.Country_Code}");
 
-                    Console.WriteLine($"Idiomas:");
-                    foreach (var language in ipDetails.Location?.Languages)
-                    {
-                        Console.WriteLine($"{language.Name}");
-                    }
+                    var languagesNames = ipDetails.Location?.Languages.ConvertAll(l => l.Name);                
+                    Console.WriteLine($"Idiomas: {String.Join(", ", languagesNames.ToArray())}");
 
                     Console.WriteLine($"Moneda: {ipDetails.Currency?.Name}");
                     Console.WriteLine($"Hora actual: {ipDetails.TimeZone?.Current_Time}");
