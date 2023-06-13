@@ -1,10 +1,16 @@
 using System;
 using System.Net.Http;
 using System.Threading.Tasks;
+using Tracker.Util;
 using Newtonsoft.Json;
 
-public class IPTracker
+namespace Tracker
 {
+    public class IPTracker
+{
+    private const double  ARG_LATITUDE = -34.61050033569336;
+    private const double  ARG_LONGITUDE = -58.39759826660156;
+
     public IPTracker()
     {
 
@@ -40,6 +46,7 @@ public class IPTracker
 
                     Console.WriteLine($"Moneda: {ipDetails.Currency?.Name}");
                     Console.WriteLine($"Hora actual: {ipDetails.TimeZone?.Current_Time}");
+                    Console.WriteLine($"Distancia: {DistanceCalculator.CalculateDistanceToArgentina(new Util.Location(ipDetails.Latitude, ipDetails.Longitude))} kms");
 
                 }
                 else
@@ -53,4 +60,5 @@ public class IPTracker
             }
         }
     }
+}
 }

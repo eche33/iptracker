@@ -1,4 +1,6 @@
-﻿internal class Program
+﻿using Tracker;
+
+internal class Program
 {
     private static async Task Main(string[] args)
     {
