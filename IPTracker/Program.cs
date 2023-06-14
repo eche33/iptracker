@@ -23,7 +23,7 @@ internal class Program
                     await TraceIPAsync(iptracker);
                     break;
                 case "2":
-                    Console.WriteLine("Rastrear IP");
+                    GetStats(iptracker);
                     break;
                 case "3":
                     stop = true;
@@ -49,5 +49,10 @@ internal class Program
         }
 
         await iptracker.TrackIPAsync(ipToTrack);
+    }
+
+    private static void GetStats(IPTracker iptracker) 
+    {
+        iptracker.ShowStats();
     }
 }
