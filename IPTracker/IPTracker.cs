@@ -59,7 +59,7 @@ namespace Tracker
         {
             Console.WriteLine($"Distancia más lejana a Buenos Aires: {ManagerStats.FarestDistance()} kms");
             Console.WriteLine($"Distancia más cercana a Buenos Aires: {ManagerStats.ClosestDistanceToBuenosAires()} kms");
-            Console.WriteLine($"Distancia promedio: {ManagerStats.AverageDistance()}");
+            Console.WriteLine($"Distancia promedio: {ManagerStats.AverageDistance()} kms");
         }
     }
 }

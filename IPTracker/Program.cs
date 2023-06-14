@@ -39,6 +39,7 @@ internal class Program
 
     private static async Task TraceIPAsync(IPTracker iptracker)
     {
+        Console.WriteLine("");
         Console.Write("Ingresa la IP a rastrear: ");
         string? ipToTrack = Console.ReadLine();
 
@@ -53,6 +54,7 @@ internal class Program
 
     private static void GetStats(IPTracker iptracker) 
     {
+        Console.WriteLine("");
         iptracker.ShowStats();
     }
 }
