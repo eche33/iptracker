@@ -38,5 +38,20 @@ namespace Tracker
             }
             else { return 0; }
         }
+
+        public double AverageDistance()
+        {
+            if (Stats.Any())
+            {
+                double sum = 0;
+                foreach (var stat in Stats)
+                {
+                    sum += (stat.Distance * stat.Times);
+                }
+
+                return sum / Stats.Sum(x => x.Times);
+            }
+            else { return 0; }
+        }
     }
 }
