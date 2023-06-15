@@ -1,12 +1,15 @@
-﻿using Tracker;
+﻿using Microsoft.Extensions.Configuration;
+using Tracker;
+using Tracker.Util;
 
 internal class Program
 {
     private static async Task Main(string[] args)
     {
         bool stop = false;
-
         var iptracker = new IPTracker();
+
+        Console.WriteLine($"{AppSettings.Get("ConnectionString")}");
 
         while (!stop)
         {
